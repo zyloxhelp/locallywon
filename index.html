@@ -69,7 +69,12 @@ nav {
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0; transition: opacity 1.5s ease; }
 .hero-video.loaded { opacity: 0.3; }
 .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(135deg, rgba(40,54,24,0.93), rgba(40,54,24,0.78)); }
-.hero-content { position: relative; z-index: 2; max-width: 750px; }
+.hero-inner { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 60px; width: 100%; }
+.hero-content { flex: 0 0 auto; max-width: 620px; }
+.hero-visual { flex: 0 0 420px; max-width: 420px; position: relative; display: flex; align-items: center; justify-content: center; }
+@media(max-width:1100px){ .hero-visual { flex: 0 0 340px; max-width: 340px; } }
+@media(max-width:900px){ .hero-inner { flex-direction: column; gap: 40px; } .hero-visual { flex: none; width: 100%; max-width: 480px; } .hero-content { max-width: 100%; } }
+@media(max-width:480px){ .hero-visual { max-width: 320px; } }
 .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(221,161,94,0.15); border: 1px solid rgba(221,161,94,0.3); padding: 8px 18px; border-radius: 100px; color: var(--fawn); font-size: 13px; font-weight: 500; margin-bottom: 32px; }
 .hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--fawn); border-radius: 50%; animation: pulse 2s infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
@@ -659,6 +664,18 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 </script>
 <style>@font-face{font-display:swap;}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Locally Won",
+  "url": "https://locallywon.com",
+  "logo": "https://locallywon.com/logo.png",
+  "contactPoint": {"@type": "ContactPoint", "telephone": "+91-98110-96907", "contactType": "customer service", "areaServed": "IN", "availableLanguage": ["English", "Hindi"]},
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127", "bestRating": "5"},
+  "sameAs": ["https://www.linkedin.com/company/locally-won", "https://www.instagram.com/locallywon", "https://www.facebook.com/locallywon"]
+}
+</script>
 </head>
 <body>
 
@@ -699,24 +716,205 @@ document.addEventListener('DOMContentLoaded', function() {
     <source src="https://videos.pexels.com/video-files/3205492/3205492-uhd_2560_1440_25fps.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-badge">🇮🇳 India's Local Growth Experts</div>
-    <h1 class="hero-heading">
-      Dominate Your <span class="accent">Local Market.</span><br>
-      <span class="line2">Grow Beyond</span> Borders.
-    </h1>
-    <p class="hero-sub">From Delhi ki galiyon to Mumbai's skyline — we help Indian businesses rank higher, reach farther, and convert better. Full-stack digital marketing, made for Bharat.</p>
-    <div class="hero-buttons">
-      <a href="#contact" class="btn-primary">Get Free Strategy Call →</a>
-      <a href="#services" class="btn-secondary">Explore Services</a>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">🇮🇳 India's Local Growth Experts</div>
+      <h1 class="hero-heading">
+        Get Your Clients to the <span class="accent">Top of Google</span><br>
+        <span class="line2">SERP in Just</span> <span class="accent">30 Days</span> —<br>
+        Fully Optimized, <span class="line2">Zero Manual Effort</span>
+      </h1>
+      <p class="hero-sub">Turn local searches into paying customers with our automated system that boosts visibility, drives qualified traffic, and scales your results without the usual complexity.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Get Free Strategy Call →</a>
+        <a href="#services" class="btn-secondary">Explore Services</a>
+      </div>
+      <div class="hero-stats-inline">
+        <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Clients</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">28+</span><span class="stat-label">Cities</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Rating</span></div>
+      </div>
+    </div>
+
+    <!-- HERO ANIMATED VISUAL -->
+    <div class="hero-visual">
+      <div class="hv-wrap">
+        <!-- Glow ring -->
+        <div class="hv-glow"></div>
+        <!-- Main dashboard card -->
+        <div class="hv-card hv-card-main">
+          <div class="hv-card-header">
+            <span class="hv-dot r"></span><span class="hv-dot y"></span><span class="hv-dot g"></span>
+            <span class="hv-card-title">Google Rankings Dashboard</span>
+          </div>
+          <!-- Bar chart -->
+          <div class="hv-chart">
+            <div class="hv-chart-label">Organic Traffic Growth</div>
+            <div class="hv-bars">
+              <div class="hv-bar-wrap"><div class="hv-bar" style="--h:35%;--d:0s"></div><span>Wk1</span></div>
+              <div class="hv-bar-wrap"><div class="hv-bar" style="--h:52%;--d:0.1s"></div><span>Wk2</span></div>
+              <div class="hv-bar-wrap"><div class="hv-bar" style="--h:48%;--d:0.2s"></div><span>Wk3</span></div>
+              <div class="hv-bar-wrap"><div class="hv-bar" style="--h:68%;--d:0.3s"></div><span>Wk4</span></div>
+              <div class="hv-bar-wrap"><div class="hv-bar hv-bar-hi" style="--h:92%;--d:0.4s"></div><span>Wk5</span></div>
+            </div>
+            <!-- Trend line SVG -->
+            <svg class="hv-trendline" viewBox="0 0 220 60" preserveAspectRatio="none">
+              <polyline class="hv-line-path" points="0,50 45,35 90,38 135,20 180,5 220,2"/>
+              <circle class="hv-line-dot" cx="220" cy="2" r="4"/>
+            </svg>
+          </div>
+          <!-- Metric row -->
+          <div class="hv-metrics">
+            <div class="hv-metric">
+              <span class="hv-metric-val hv-count" data-target="94">0</span><span class="hv-metric-unit">%</span>
+              <span class="hv-metric-label">Rank #1 Rate</span>
+            </div>
+            <div class="hv-metric-sep"></div>
+            <div class="hv-metric">
+              <span class="hv-metric-val hv-count" data-target="3.2">0</span><span class="hv-metric-unit">x</span>
+              <span class="hv-metric-label">Lead Growth</span>
+            </div>
+            <div class="hv-metric-sep"></div>
+            <div class="hv-metric">
+              <span class="hv-metric-val hv-count" data-target="30">0</span><span class="hv-metric-unit">d</span>
+              <span class="hv-metric-label">Time to Top</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating rank badge -->
+        <div class="hv-float hv-badge-rank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#DDA15E"/></svg>
+          <div><div class="hv-badge-title">Google #1</div><div class="hv-badge-sub">Position Achieved</div></div>
+        </div>
+
+        <!-- Floating SERP card -->
+        <div class="hv-float hv-serp">
+          <div class="hv-serp-row">
+            <div class="hv-serp-pos p1">1</div>
+            <div class="hv-serp-info"><div class="hv-serp-site">locallywon.com</div><div class="hv-serp-desc">Best Digital Marketing Agency India</div></div>
+          </div>
+          <div class="hv-serp-row">
+            <div class="hv-serp-pos p2">2</div>
+            <div class="hv-serp-info dim"><div class="hv-serp-site">competitor1.in</div><div class="hv-serp-desc">Digital Marketing Services</div></div>
+          </div>
+          <div class="hv-serp-row">
+            <div class="hv-serp-pos p3">3</div>
+            <div class="hv-serp-info dim"><div class="hv-serp-site">competitor2.com</div><div class="hv-serp-desc">SEO Agency India</div></div>
+          </div>
+        </div>
+
+        <!-- Floating notification -->
+        <div class="hv-float hv-notif">
+          <div class="hv-notif-icon">📈</div>
+          <div><div class="hv-notif-title">New Lead!</div><div class="hv-notif-sub">via Google Search</div></div>
+        </div>
+
+        <!-- Orbiting dots -->
+        <div class="hv-orbit">
+          <div class="hv-orbit-dot d1"></div>
+          <div class="hv-orbit-dot d2"></div>
+          <div class="hv-orbit-dot d3"></div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="hero-stats">
-    <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Clients Served</span></div>
-    <div class="stat"><span class="stat-num">28+</span><span class="stat-label">Indian Cities</span></div>
-    <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Avg. Rating</span></div>
-  </div>
 </section>
+
+<style>
+/* ── Hero Visual Styles ── */
+.hero-stats-inline { display: flex; align-items: center; gap: 24px; margin-top: 40px; }
+.hero-stats-inline .stat { text-align: left; }
+.hero-stats-inline .stat-num { font-family: 'Amiri', serif; font-size: 28px; font-weight: 700; color: var(--fawn); display: block; }
+.hero-stats-inline .stat-label { font-size: 11px; color: rgba(254,250,224,0.45); letter-spacing: 0.08em; text-transform: uppercase; }
+.stat-div { width: 1px; height: 36px; background: rgba(254,250,224,0.12); }
+
+.hv-wrap { position: relative; width: 380px; height: 420px; }
+@media(max-width:1100px){ .hv-wrap { width: 320px; height: 360px; } }
+@media(max-width:900px){ .hv-wrap { width: 380px; height: 420px; } }
+@media(max-width:480px){ .hv-wrap { width: 300px; height: 340px; } }
+
+/* Glow */
+.hv-glow { position: absolute; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(221,161,94,0.18) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); animation: hvGlowPulse 4s ease-in-out infinite; }
+@keyframes hvGlowPulse { 0%,100%{opacity:0.6;transform:translate(-50%,-50%) scale(1)} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.15)} }
+
+/* Main card */
+.hv-card-main { position: absolute; top: 40px; left: 0; right: 0; background: rgba(254,250,224,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(221,161,94,0.2); border-radius: 18px; padding: 20px; animation: hvFloat 6s ease-in-out infinite; }
+@keyframes hvFloat { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-10px)} }
+.hv-card-header { display: flex; align-items: center; gap: 6px; margin-bottom: 18px; }
+.hv-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.hv-dot.r { background: #ff5f57; }
+.hv-dot.y { background: #ffbd2e; }
+.hv-dot.g { background: #28ca41; }
+.hv-card-title { font-size: 11px; color: rgba(254,250,224,0.5); margin-left: 6px; letter-spacing: 0.05em; }
+
+/* Bar chart */
+.hv-chart { margin-bottom: 16px; position: relative; }
+.hv-chart-label { font-size: 10px; color: rgba(254,250,224,0.35); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.hv-bars { display: flex; align-items: flex-end; gap: 8px; height: 80px; position: relative; z-index: 1; }
+.hv-bar-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; height: 100%; justify-content: flex-end; }
+.hv-bar { width: 100%; border-radius: 4px 4px 0 0; background: rgba(96,108,56,0.5); height: 0; animation: hvBarGrow 1.2s cubic-bezier(0.34,1.3,0.64,1) var(--d) forwards; }
+.hv-bar-hi { background: linear-gradient(180deg, #DDA15E, #BC6C25) !important; box-shadow: 0 0 16px rgba(221,161,94,0.4); }
+@keyframes hvBarGrow { to { height: var(--h); } }
+.hv-bar-wrap span { font-size: 9px; color: rgba(254,250,224,0.3); }
+
+/* Trend line */
+.hv-trendline { position: absolute; bottom: 14px; left: 0; right: 0; height: 60px; width: 100%; z-index: 2; pointer-events: none; }
+.hv-line-path { fill: none; stroke: #DDA15E; stroke-width: 2; stroke-dasharray: 400; stroke-dashoffset: 400; animation: hvLineDraw 2s ease-out 1s forwards; opacity: 0.7; }
+@keyframes hvLineDraw { to { stroke-dashoffset: 0; } }
+.hv-line-dot { fill: #DDA15E; animation: hvLineDraw 2s ease-out 1s forwards; opacity: 0; }
+@keyframes hvLineDotIn { to { opacity: 1; } }
+
+/* Metrics */
+.hv-metrics { display: flex; align-items: center; gap: 0; border-top: 1px solid rgba(221,161,94,0.12); padding-top: 14px; }
+.hv-metric { flex: 1; text-align: center; }
+.hv-metric-val { font-family: 'Amiri', serif; font-size: 22px; font-weight: 700; color: #DDA15E; }
+.hv-metric-unit { font-size: 13px; color: rgba(221,161,94,0.6); }
+.hv-metric-label { font-size: 9px; color: rgba(254,250,224,0.35); text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-top: 2px; }
+.hv-metric-sep { width: 1px; height: 36px; background: rgba(221,161,94,0.12); }
+
+/* Floating elements base */
+.hv-float { position: absolute; border-radius: 12px; padding: 10px 14px; backdrop-filter: blur(10px); border: 1px solid rgba(221,161,94,0.15); }
+
+/* Rank badge */
+.hv-badge-rank { display: flex; align-items: center; gap: 10px; bottom: 20px; left: -20px; background: rgba(40,54,24,0.9); animation: hvFloat2 5s ease-in-out infinite 1s; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+@keyframes hvFloat2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.hv-badge-title { font-size: 12px; font-weight: 600; color: #DDA15E; }
+.hv-badge-sub { font-size: 10px; color: rgba(254,250,224,0.5); }
+
+/* SERP preview */
+.hv-serp { top: 30px; right: -30px; background: rgba(20,30,12,0.92); min-width: 200px; animation: hvFloat3 7s ease-in-out infinite 0.5s; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+@keyframes hvFloat3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.hv-serp-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.hv-serp-row:last-child { border-bottom: none; }
+.hv-serp-pos { width: 18px; height: 18px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+.p1 { background: #DDA15E; color: #283618; }
+.p2, .p3 { background: rgba(96,108,56,0.3); color: rgba(254,250,224,0.4); }
+.hv-serp-site { font-size: 10px; font-weight: 600; color: #DDA15E; }
+.hv-serp-desc { font-size: 9px; color: rgba(254,250,224,0.4); }
+.hv-serp-info.dim .hv-serp-site { color: rgba(254,250,224,0.35); }
+
+/* Notification */
+.hv-notif { display: flex; align-items: center; gap: 10px; bottom: 70px; right: -24px; background: rgba(40,54,24,0.95); animation: hvNotifIn 0.6s cubic-bezier(0.34,1.3,0.64,1) 2.5s both, hvFloat4 6s ease-in-out infinite 3s; box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+@keyframes hvNotifIn { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
+@keyframes hvFloat4 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+.hv-notif-icon { font-size: 20px; }
+.hv-notif-title { font-size: 11px; font-weight: 600; color: #FEFAE0; }
+.hv-notif-sub { font-size: 9px; color: rgba(254,250,224,0.45); }
+
+/* Orbiting dots */
+.hv-orbit { position: absolute; top: 50%; left: 50%; width: 360px; height: 360px; transform: translate(-50%,-50%); animation: hvOrbitSpin 18s linear infinite; pointer-events: none; border-radius: 50%; border: 1px dashed rgba(221,161,94,0.08); }
+.hv-orbit-dot { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--fawn); opacity: 0.5; }
+.d1 { top: 0; left: 50%; transform: translate(-50%,-50%); }
+.d2 { bottom: 0; right: 10%; transform: translate(50%,50%); }
+.d3 { top: 50%; left: 0; transform: translate(-50%,-50%); opacity: 0.3; }
+@keyframes hvOrbitSpin { from{transform:translate(-50%,-50%) rotate(0deg)} to{transform:translate(-50%,-50%) rotate(360deg)} }
+
+/* Remove old stats bar */
+.hero-stats { display: none !important; }
+</style>
 
 <!-- MARQUEE -->
 <div class="marquee-section">
@@ -813,7 +1011,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <a href="cities/digital-marketing-kochi.html" class="city-pill"><span>🌴</span> Kochi</a>
     <a href="cities/digital-marketing-indore.html" class="city-pill"><span>🏯</span> Indore</a>
     <a href="cities/digital-marketing-surat.html" class="city-pill"><span>🌻</span> Surat</a>
-    <a href="cities/digital-marketing-delhi.html" class="city-pill"><span>✨</span> & 14 More</a>
+    <a href="#" class="city-pill" onclick="showMoreCities(event)"><span>✨</span> &amp; 14 More</a>
   </div>
 </section>
 
@@ -849,9 +1047,9 @@ document.addEventListener('DOMContentLoaded', function() {
     <h2 class="section-title">Let's Start Your <span>Growth Story</span></h2>
   </div>
   <div class="contact-grid">
-    <div class="contact-form">
+    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xpwqkdjz" method="POST">
       <div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="Ramesh Gupta"></div>
-      <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input" placeholder="+91 98765 43210"></div>
+      <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" id="phoneInput" class="form-input" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" inputmode="numeric"></div>
       <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="ramesh@yourbusiness.in"></div>
       <div class="form-group"><label class="form-label">Service You Need</label>
         <select class="form-select">
@@ -870,8 +1068,8 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
       <div class="form-group"><label class="form-label">Your City</label><input type="text" class="form-input" placeholder="Delhi, Mumbai, Bangalore..."></div>
       <div class="form-group"><label class="form-label">About Your Business</label><textarea class="form-textarea" placeholder="Briefly describe your business and goals..."></textarea></div>
-      <button class="form-btn" onclick="handleFormSubmit()" type="button">Send Message & Get Free Audit →</button>
-    </div>
+      <button class="form-btn" type="submit" id="submitBtn">Send Message &amp; Get Free Audit →</button>
+    </form>
     <div class="contact-info">
       <h3 class="contact-info-title">Talk to a Growth Expert</h3>
       <p class="contact-info-desc">Fill the form and we'll get back within 2 business hours. Hum Hindi aur English dono mein baat kar sakte hain.</p>
@@ -946,8 +1144,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <p>India's local growth experts. Helping businesses dominate their markets online — from small towns to metro cities.</p>
     </div>
     <div class="footer-col"><h4>Services</h4><ul><li><a href="services/strategy-consulting.html">Strategy & Consulting</a></li><li><a href="services/web-tech.html">Web & Tech</a></li><li><a href="services/seo.html">SEO Services</a></li><li><a href="services/content-marketing.html">Content Marketing</a></li><li><a href="services/social-media.html">Social Media</a></li><li><a href="services/paid-advertising.html">Paid Ads</a></li></ul></div>
-    <div class="footer-col"><h4>Cities</h4><ul><li><a href="#">SEO Delhi</a></li><li><a href="#">SEO Mumbai</a></li><li><a href="#">SEO Bangalore</a></li><li><a href="#">SEO Pune</a></li><li><a href="#">SEO Hyderabad</a></li><li><a href="index.html#cities">All Cities →</a></li></ul></div>
-    <div class="footer-col"><h4>Company</h4><ul><li><a href="index.html#why-us">About Us</a></li><li><a href="index.html#testimonials">Case Studies</a></li><li><a href="index.html">Blog</a></li><li><a href="index.html#contact">Careers</a></li><li><a href="index.html#contact">Privacy Policy</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Cities</h4><ul><li><a href="cities/seo-delhi.html">SEO Delhi</a></li><li><a href="cities/seo-mumbai.html">SEO Mumbai</a></li><li><a href="cities/seo-bangalore.html">SEO Bangalore</a></li><li><a href="cities/seo-pune.html">SEO Pune</a></li><li><a href="cities/seo-hyderabad.html">SEO Hyderabad</a></li><li><a href="index.html#cities">All Cities →</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="index.html#testimonials">Case Studies</a></li><li><a href="index.html#contact">Blog (Coming Soon)</a></li><li><a href="index.html#contact">Careers</a></li><li><a href="index.html#contact">Privacy Policy</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 Locally Won Digital Marketing Agency. All rights reserved.</span>
@@ -979,3 +1177,166 @@ window.addEventListener('scroll', () => {
 
 // Scroll Progress
 window.addEventListener('scroll', () =>
+  var bar = document.querySelector('.progress-bar');
+  if(bar) bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+});
+</script>
+
+<!-- More Cities Modal -->
+<div id="citiesModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:10000;align-items:center;justify-content:center;">
+  <div style="background:#FEFAE0;border-radius:20px;padding:36px;max-width:680px;width:92%;max-height:88vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <button onclick="document.getElementById('citiesModal').style.display='none'" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:#283618;font-weight:700;">✕</button>
+    <h2 style="font-family:'Amiri',serif;color:#283618;margin-bottom:6px;font-size:26px;font-weight:700;">All 28 Cities We Serve</h2>
+    <p style="color:#606C38;margin-bottom:22px;font-size:13px;">India's most comprehensive local digital marketing coverage</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+      <a href="cities/digital-marketing-gurgaon.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">🏙️ Gurgaon</a>
+      <a href="cities/digital-marketing-noida.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">🏗️ Noida</a>
+      <a href="cities/digital-marketing-bhopal.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">🌲 Bhopal</a>
+      <a href="cities/digital-marketing-nagpur.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">🟠 Nagpur</a>
+      <a href="cities/digital-marketing-visakhapatnam.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">⚓ Vizag</a>
+      <a href="cities/digital-marketing-coimbatore.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">🏭 Coimbatore</a>
+      <a href="cities/digital-marketing-patna.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">🏛️ Patna</a>
+      <a href="cities/digital-marketing-vadodara.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">🎨 Vadodara</a>
+      <a href="cities/digital-marketing-bhubaneswar.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">🛕 Bhubaneswar</a>
+      <a href="cities/digital-marketing-amritsar.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">✨ Amritsar</a>
+      <a href="cities/digital-marketing-mysore.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">👑 Mysore</a>
+      <a href="cities/digital-marketing-goa.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">🏖️ Goa</a>
+      <a href="cities/digital-marketing-jodhpur.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">🏰 Jodhpur</a>
+      <a href="cities/digital-marketing-dehradun.html" style="background:#283618;color:#FEFAE0;border-radius:100px;padding:8px 10px;text-align:center;font-size:12px;text-decoration:none;font-weight:600;">🏔️ Dehradun</a>
+    </div>
+    <div style="margin-top:22px;text-align:center;">
+      <a href="index.html#contact" onclick="document.getElementById('citiesModal').style.display='none'" style="background:#DDA15E;color:#283618;padding:12px 28px;border-radius:100px;text-decoration:none;font-weight:700;font-size:13px;display:inline-block;">Get Free Audit for Your City →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── More Cities Modal ──
+function showMoreCities(e) {
+  e.preventDefault();
+  var modal = document.getElementById('citiesModal');
+  modal.style.display = 'flex';
+}
+window.addEventListener('click', function(e) {
+  var modal = document.getElementById('citiesModal');
+  if (modal && e.target === modal) modal.style.display = 'none';
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    var modal = document.getElementById('citiesModal');
+    if (modal) modal.style.display = 'none';
+  }
+});
+
+// ── Phone: numbers only, max 10 digits ──
+var phoneInput = document.getElementById('phoneInput');
+if (phoneInput) {
+  phoneInput.addEventListener('input', function() {
+    this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+    this.style.borderColor = this.value.length === 10 ? '#606C38' : '';
+  });
+  phoneInput.addEventListener('keypress', function(e) {
+    if (!/[0-9]/.test(e.key)) e.preventDefault();
+  });
+  phoneInput.addEventListener('paste', function(e) {
+    e.preventDefault();
+    var paste = (e.clipboardData || window.clipboardData).getData('text');
+    this.value = paste.replace(/[^0-9]/g, '').slice(0, 10);
+  });
+}
+
+// ── Form submit validation ──
+var contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    var name = document.querySelector('.form-input[placeholder="Ramesh Gupta"]');
+    var phone = document.getElementById('phoneInput');
+    var email = document.querySelector('input[type="email"].form-input');
+    var btn = document.getElementById('submitBtn');
+    var valid = true;
+
+    if (!name || !name.value.trim()) {
+      name.style.borderColor = '#BC6C25';
+      name.focus();
+      valid = false;
+    }
+    if (!phone || phone.value.trim().length !== 10) {
+      if (valid) { phone.style.borderColor = '#BC6C25'; phone.focus(); }
+      alert('Please enter a valid 10-digit mobile number.');
+      valid = false;
+    }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      if (valid) { email.style.borderColor = '#BC6C25'; email.focus(); }
+      valid = false;
+    }
+    if (!valid) { e.preventDefault(); return false; }
+
+    if (btn) {
+      btn.innerHTML = '✅ Sending...';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+    }
+  });
+
+  // Reset border on input
+  contactForm.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(function(el) {
+    el.addEventListener('input', function() { this.style.borderColor = ''; });
+  });
+}
+</script>
+
+<!-- WhatsApp Float -->
+<style>
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+.wa-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);cursor:pointer;text-decoration:none;transition:transform 0.3s;}
+.wa-btn:hover{transform:scale(1.1);}
+.wa-pulse{position:absolute;width:56px;height:56px;background:#25D366;border-radius:50%;animation:wa-ping 2s infinite;opacity:0.5;}
+@keyframes wa-ping{0%{transform:scale(1);opacity:0.5}70%,100%{transform:scale(1.5);opacity:0}}
+</style>
+<div class="wa-float">
+  <a class="wa-btn" href="https://wa.me/919811096907?text=Hi!%20I%20found%20you%20on%20locallywon.com%20and%20want%20to%20know%20more." target="_blank" rel="noopener" aria-label="WhatsApp">
+    <div class="wa-pulse"></div>
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// ── Animated Counter for Hero Visual ──
+(function() {
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute('data-target'));
+    var isDecimal = target % 1 !== 0;
+    var duration = 1800;
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var prog = Math.min((ts - start) / duration, 1);
+      var ease = 1 - Math.pow(1 - prog, 3);
+      var val = target * ease;
+      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val);
+      if (prog < 1) requestAnimationFrame(step);
+      else el.textContent = isDecimal ? target.toFixed(1) : target;
+    }
+    requestAnimationFrame(step);
+  }
+
+  var counters = document.querySelectorAll('.hv-count');
+  if (!counters.length) return;
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        setTimeout(function() {
+          counters.forEach(function(el) { animateCount(el); });
+        }, 1200);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  var wrap = document.querySelector('.hv-wrap');
+  if (wrap) obs.observe(wrap);
+})();
+</script>
+</body>
+</html>
