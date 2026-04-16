@@ -514,52 +514,7 @@ nav { animation: navSlide 0.6s cubic-bezier(0.4,0,0.2,1) both; }
   }
 }
 
-// ── CONTACT FORM HANDLER ──
-function handleFormSubmit() {
-  var nameEl = document.querySelector('.form-input[placeholder="Ramesh Gupta"]');
-  var phoneEl = document.querySelector('.form-input[placeholder="+91 98765 43210"]');
-  var emailEl = document.querySelector('.form-input[placeholder="ramesh@yourbusiness.in"]');
-  var cityEl = document.querySelector('.form-input[placeholder="Delhi, Mumbai, Bangalore..."]');
-  var serviceEl = document.querySelector('.form-select');
-  var msgEl = document.querySelector('.form-textarea');
-  var btn = document.querySelector('.form-btn');
-
-  var name = nameEl ? nameEl.value.trim() : '';
-  var phone = phoneEl ? phoneEl.value.trim() : '';
-  var email = emailEl ? emailEl.value.trim() : '';
-
-  if (!name) { if(nameEl){nameEl.style.borderColor='#BC6C25'; nameEl.focus();} return; }
-  if (!phone) { if(phoneEl){phoneEl.style.borderColor='#BC6C25'; phoneEl.focus();} return; }
-  if (!email) { if(emailEl){emailEl.style.borderColor='#BC6C25'; emailEl.focus();} return; }
-
-  var subject = 'New Enquiry - ' + name + ' | Locally Won';
-  var body = 'Name: ' + name + '%0A' +
-             'Phone: ' + phone + '%0A' +
-             'Email: ' + email + '%0A' +
-             'City: ' + (cityEl ? cityEl.value : '') + '%0A' +
-             'Service: ' + (serviceEl ? serviceEl.value : '') + '%0A' +
-             'Message: ' + (msgEl ? msgEl.value : '') + '%0A%0A' +
-             'Sent from locallywon.com';
-
-  if (btn) {
-    btn.innerHTML = '✅ Sending...';
-    btn.disabled = true;
-    btn.style.background = '#606C38';
-  }
-
-  setTimeout(function() {
-    window.location.href = 'mailto:zyloxhelp@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + body;
-    if (btn) {
-      btn.innerHTML = '✅ Message Sent! We will call you soon.';
-    }
-    if(nameEl) nameEl.value = '';
-    if(phoneEl) phoneEl.value = '';
-    if(emailEl) emailEl.value = '';
-    if(cityEl) cityEl.value = '';
-    if(serviceEl) serviceEl.selectedIndex = 0;
-    if(msgEl) msgEl.value = '';
-  }, 800);
-//REPLACED_HANDLER
+// ── CONTACT FORM HANDLER (replaced by Web3Forms) ──
 
 // Add Enter key support for form fields
 document.addEventListener('DOMContentLoaded', function() {
@@ -1047,28 +1002,68 @@ document.addEventListener('DOMContentLoaded', function() {
     <h2 class="section-title">Let's Start Your <span>Growth Story</span></h2>
   </div>
   <div class="contact-grid">
-    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xpwqkdjz" method="POST">
-      <div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="Ramesh Gupta"></div>
-      <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" id="phoneInput" class="form-input" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" inputmode="numeric"></div>
-      <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="ramesh@yourbusiness.in"></div>
-      <div class="form-group"><label class="form-label">Service You Need</label>
-        <select class="form-select">
+    <!-- ✅ Formsubmit.co — seedha Gmail inbox mein -->
+    <form class="contact-form" id="contactForm"
+          action="https://formsubmit.co/zyloxhelp@gmail.com"
+          method="POST">
+
+      <!-- Formsubmit hidden config -->
+      <input type="hidden" name="_subject"  value="🔥 New Lead — Locally Won">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha"  value="false">
+      <input type="hidden" name="_next"     value="https://locallywon.com/thankyou.html">
+
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" id="inp-name" name="Name" class="form-input"
+               placeholder="Ramesh Gupta" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" id="inp-phone" name="Phone" class="form-input"
+               placeholder="10-digit mobile number"
+               maxlength="10" pattern="[0-9]{10}" inputmode="numeric" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" id="inp-email" name="Email" class="form-input"
+               placeholder="ramesh@yourbusiness.in" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Service You Need</label>
+        <select id="inp-service" name="Service" class="form-select">
           <option value="">Select a Service</option>
-          <option>Strategy & Consulting</option>
-          <option>Web & Tech</option>
+          <option>Strategy &amp; Consulting</option>
+          <option>Web &amp; Tech</option>
           <option>SEO</option>
           <option>Content Marketing</option>
           <option>Social Media Marketing</option>
           <option>Paid Advertising</option>
           <option>Creative Services</option>
-          <option>Email & CRM Marketing</option>
-          <option>Analytics & Reporting</option>
+          <option>Email &amp; CRM Marketing</option>
+          <option>Analytics &amp; Reporting</option>
           <option>Full Package</option>
         </select>
       </div>
-      <div class="form-group"><label class="form-label">Your City</label><input type="text" class="form-input" placeholder="Delhi, Mumbai, Bangalore..."></div>
-      <div class="form-group"><label class="form-label">About Your Business</label><textarea class="form-textarea" placeholder="Briefly describe your business and goals..."></textarea></div>
-      <button class="form-btn" type="submit" id="submitBtn">Send Message &amp; Get Free Audit →</button>
+
+      <div class="form-group">
+        <label class="form-label">Your City</label>
+        <input type="text" id="inp-city" name="City" class="form-input"
+               placeholder="Delhi, Mumbai, Bangalore...">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">About Your Business</label>
+        <textarea id="inp-message" name="Message" class="form-textarea"
+                  placeholder="Briefly describe your business and goals..."></textarea>
+      </div>
+
+      <button class="form-btn" type="submit" id="submitBtn">
+        Send Message &amp; Get Free Audit →
+      </button>
     </form>
     <div class="contact-info">
       <h3 class="contact-info-title">Talk to a Growth Expert</h3>
@@ -1246,43 +1241,7 @@ if (phoneInput) {
 }
 
 // ── Form submit validation ──
-var contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    var name = document.querySelector('.form-input[placeholder="Ramesh Gupta"]');
-    var phone = document.getElementById('phoneInput');
-    var email = document.querySelector('input[type="email"].form-input');
-    var btn = document.getElementById('submitBtn');
-    var valid = true;
-
-    if (!name || !name.value.trim()) {
-      name.style.borderColor = '#BC6C25';
-      name.focus();
-      valid = false;
-    }
-    if (!phone || phone.value.trim().length !== 10) {
-      if (valid) { phone.style.borderColor = '#BC6C25'; phone.focus(); }
-      alert('Please enter a valid 10-digit mobile number.');
-      valid = false;
-    }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-      if (valid) { email.style.borderColor = '#BC6C25'; email.focus(); }
-      valid = false;
-    }
-    if (!valid) { e.preventDefault(); return false; }
-
-    if (btn) {
-      btn.innerHTML = '✅ Sending...';
-      btn.disabled = true;
-      btn.style.opacity = '0.7';
-    }
-  });
-
-  // Reset border on input
-  contactForm.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(function(el) {
-    el.addEventListener('input', function() { this.style.borderColor = ''; });
-  });
-}
+// (old form listener removed)
 </script>
 
 <!-- WhatsApp Float -->
@@ -1336,6 +1295,55 @@ if (contactForm) {
 
   var wrap = document.querySelector('.hv-wrap');
   if (wrap) obs.observe(wrap);
+})();
+</script>
+
+<!-- ✅ Form UX — phone validation + enter key only -->
+<script>
+(function(){
+  // Phone: numbers only, max 10 digits
+  var ph = document.getElementById('inp-phone');
+  if(ph){
+    ph.addEventListener('input', function(){
+      this.value = this.value.replace(/[^0-9]/g,'').slice(0,10);
+      this.style.borderColor = this.value.length===10 ? '#606C38' : '';
+    });
+    ph.addEventListener('keypress',function(e){
+      if(!/[0-9]/.test(e.key)) e.preventDefault();
+    });
+    ph.addEventListener('paste',function(e){
+      e.preventDefault();
+      this.value=(e.clipboardData||window.clipboardData).getData('text').replace(/[^0-9]/g,'').slice(0,10);
+    });
+  }
+
+  // Reset red border on type
+  var form = document.getElementById('contactForm');
+  if(form){
+    form.querySelectorAll('.form-input,.form-select,.form-textarea').forEach(function(el){
+      el.addEventListener('input',function(){ this.style.borderColor=''; });
+    });
+
+    // Client-side validation before submit
+    form.addEventListener('submit', function(e){
+      var name  = document.getElementById('inp-name');
+      var phone = document.getElementById('inp-phone');
+      var email = document.getElementById('inp-email');
+      var ok    = true;
+
+      function err(el){ el.style.borderColor='#BC6C25'; if(ok){el.focus();ok=false;} }
+
+      if(!name  || !name.value.trim())  err(name);
+      if(!phone || phone.value.replace(/[^0-9]/g,'').length!==10) err(phone);
+      if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) err(email);
+
+      if(!ok){ e.preventDefault(); return; }
+
+      // Show loading on button
+      var btn = document.getElementById('submitBtn');
+      if(btn){ btn.innerHTML='⏳ Sending...'; btn.disabled=true; btn.style.opacity='0.8'; }
+    });
+  }
 })();
 </script>
 </body>
