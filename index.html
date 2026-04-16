@@ -516,21 +516,7 @@ nav { animation: navSlide 0.6s cubic-bezier(0.4,0,0.2,1) both; }
 
 // ── CONTACT FORM HANDLER (replaced by Web3Forms) ──
 
-// Add Enter key support for form fields
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(el => {
-    el.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && el.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        handleFormSubmit();
-      }
-    });
-    // Reset border on input
-    el.addEventListener('input', function() {
-      el.style.borderColor = '';
-    });
-  });
-});
+// (old enter key handler removed)
 
 
 // Force email display (prevent Cloudflare obfuscation)
