@@ -1,52 +1,41 @@
-# Locally Won — v4 (Complete Mobile Fix)
+# Locally Won — v2 (Mobile-Responsive + Form Fixed)
 
-## v4 mein kya fix hua
+## Kya fix hua
 
-### Right-side gap / horizontal overflow FIXED ✅
-- `.hero-glow` (900px wide) aur `.lw150-glow` (700px wide) decorative elements mobile screen se bahar nikal rahe the
-- Hero pe badges (`hv-badge-1`, `hv-badge-2`) negative offsets ke saath the (right:-50px, left:-60px) — overflow cause kar rahi thi
-- Universal `overflow-x: hidden` aur `max-width: 100vw` lagaya
-- Ab koi empty gap nahi dikhega right mein
+### 1. Form issue fix
+- Pehle 2 forms the: broken GHL iframe + custom HTML form (do wajah se clutter aur confusion)
+- **Ab sirf 1 form** — GHL iframe (ID: xSsWQ7anuXEa9b4Sb1wK)
+- Custom HTML fields (email/business/country) + "Get My Free Audit Now" button remove
+- Leads seedha GHL CRM mein aayengi (iframe form ke through)
 
-### Sections responsive
-- **Hero** — grid stack vertical, phone visual hide, stats 2x2
-- **Countries** — 2 columns (tablet), 1 column (small mobile)
-- **LW150** — single column stack, visual hidden on mobile
-- **Services** — single column on mobile
-- **Numbers grid** (amber stats) — 2x2 on mobile
-- **Process steps** — compact padding, smaller step numbers
-- **Testimonials** — single column
-- **Team carousel** — 1 card at a time on mobile
-- **Stats grid (LIVE RESULTS)** — 2x2 clean
-- **Audit section** — padding reduced, guarantee badge stacked
+### 2. Mobile responsive
+- Viewport meta tag verified
+- Iframe mobile-adaptive (min-height 520px, form_embed.js auto-resizes)
+- Audit section mobile padding optimized
+- Guarantee badge — mobile pe vertical stack (pehle text cut hota tha)
+- Timer badge — mobile pe wrap hota hai
+- Team grid — 1 column mobile mein
+- Hero text — mobile pe font-size adjusted
+- Horizontal overflow fix
 
-### Mobile UX polish
-- Headings smaller font sizes (scale with screen)
-- Section padding reduced
-- Sticky bar compact
-- WhatsApp button smaller, tooltip hidden on mobile
-- CTA buttons full-width on mobile
-
-### Pichhle fixes barkarar:
-- Sirf GHL iframe form (custom form removed)
-- Image compression 55-94%
+### 3. Size optimization (same as before)
+- Images compressed 55-94%
 - CSS/JS/HTML minified
 
 ## File size
-- index.html: **370 KB** (original 848 KB → 56% reduction)
+
+| | Original | v2 (this file) |
+|---|---|---|
+| index.html | 848 KB | ~360 KB |
+| Reduction | — | 57% |
 
 ## Upload
 
-1. index.html download karo
-2. GitHub Desktop → Show in Explorer
-3. Purani file replace karo
-4. Summary: `Mobile overflow fix + full responsive`
-5. Commit to main → Push origin
-6. 1-2 min baad mobile pe locallywon.com refresh karo
+GitHub Desktop → folder kholo → index.html replace karo → commit → push.
+1-2 min mein locallywon.com pe naya version live.
 
-## Test karne ke liye
-Mobile pe yeh check karo:
-- Right side mein empty gap NAHI dikhna chahiye
-- Stats (12,847 | 19,500 | 94 | 3,241) clean 2x2 grid mein
-- Hero section vertical stack
-- All sections full-width, no horizontal scroll
+## Agar GHL form ID galat hai
+
+xSsWQ7anuXEa9b4Sb1wK — yeh maine as-is rakha hai. Agar yeh ID GHL mein exist nahi karti, toh broken image dikhega phir bhi.
+
+Fix: index.html mein `xSsWQ7anuXEa9b4Sb1wK` find karke actual form ID se replace kar do (3 jagah aata hai iframe tag mein).
