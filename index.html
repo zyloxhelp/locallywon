@@ -1566,6 +1566,51 @@ body.lw-modal-open { overflow:hidden !important; }
     animation-duration: 40s !important;
   }
 }
+
+/* ── Modal: definitive compact sizing ───────────────────────────────────── */
+@media (min-width: 601px) {
+  #lw-modal-overlay {
+    align-items: center !important;
+    padding: 1rem !important;
+  }
+  #lw-modal-box {
+    max-width: 420px !important;
+    max-height: 82vh !important;
+    border-radius: 14px !important;
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    margin: auto !important;
+  }
+}
+@media (max-width: 600px) {
+  #lw-modal-overlay {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+  #lw-modal-box {
+    max-width: 100% !important;
+    width: 100% !important;
+    border-radius: 14px 14px 0 0 !important;
+    max-height: 88vh !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+  }
+}
+/* Exit popup compact on mobile */
+@media (max-width: 480px) {
+  #exit-popup > div {
+    padding: 1.2rem 1.2rem !important;
+    max-width: 96% !important;
+  }
+  #exit-popup-h {
+    font-size: 1.2rem !important;
+  }
+}
 </style>
 </head><body><a href="#main-content" class="skip-link" style="position:absolute;top:-9999px;left:0;background:var(--amber);color:var(--ink);padding:0.5rem 1rem;font-weight:700;z-index:10000;border-radius:0 0 6px 0;">Skip to main content</a><nav class="nav" role="navigation" style="
 position:fixed; top:0; left:0; right:0; z-index:999;
@@ -2262,12 +2307,12 @@ background:rgba(0,0,0,0.7); backdrop-filter:blur(4px);
 align-items:center; justify-content:center;
 " role="dialog" aria-modal="true" aria-labelledby="exit-popup-h"><div style="
 background:var(--ink); border:2px solid var(--amber);
-border-radius:20px; padding:3rem 2.5rem; max-width:480px; width:90%;
+border-radius:16px; padding:1.6rem 1.8rem; max-width:420px; width:92%;
 position:relative; text-align:center;
 animation:fadeUp 0.4s cubic-bezier(0.34,1.56,0.64,1);
-"><button onclick="document.getElementById('exit-popup').style.display='none'"
-style="position:absolute;top:1rem;right:1.2rem;background:none;border:none;color:rgba(254,250,224,0.4);font-size:1.4rem;cursor:pointer;" aria-label="Close">✕</button><div style="font-size:2.5rem;margin-bottom:0.8rem;">🎯</div><h2 id="exit-popup-h" style="font-family:var(--ff-head);color:var(--sand);font-size:1.8rem;margin-bottom:0.5rem;">Wait — Don't Leave Empty-Handed!</h2><p style="color:rgba(254,250,224,0.6);margin-bottom:1.5rem;font-size:0.95rem;">Get a <strong style="color:var(--amber);">FREE local search report</strong> for your business — we'll show you exactly how many leads you're missing every month.</p><div style="background:rgba(221,161,94,0.1);border:1px solid rgba(221,161,94,0.2);border-radius:10px;padding:1rem;margin-bottom:1.5rem;text-align:left;"><div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;font-size:0.85rem;color:rgba(254,250,224,0.7);"><span style="color:#4CAF50;">✓</span> Your current Google ranking</div><div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;font-size:0.85rem;color:rgba(254,250,224,0.7);"><span style="color:#4CAF50;">✓</span> Top 3 competitors in your area</div><div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:rgba(254,250,224,0.7);"><span style="color:#4CAF50;">✓</span> Exact gaps we found — delivered in 24hrs</div></div><input type="email" id="exit-email" placeholder="Enter your email" style="
-width:100%;padding:0.85rem 1rem;border-radius:8px;margin-bottom:0.8rem;
+"><button onclick="(function(){ document.getElementById('exit-popup').style.display='none'; var sb=document.getElementById('sticky-bar'); if(sb){sb.style.transform='';sb.style.opacity='';} window.dispatchEvent(new Event('scroll')); })()"
+style="position:absolute;top:0.65rem;right:0.8rem;background:rgba(221,161,94,0.15);border:1.5px solid rgba(221,161,94,0.35);border-radius:50%;width:30px;height:30px;color:var(--sand);font-size:0.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;" aria-label="Close">✕</button><div style="font-size:1.4rem;margin-bottom:0.4rem;">🎯</div><h2 id="exit-popup-h" style="font-family:var(--ff-head);color:var(--sand);font-size:1.8rem;margin-bottom:0.5rem;">Wait — Don't Leave Empty-Handed!</h2><p style="color:rgba(254,250,224,0.6);margin-bottom:1rem;font-size:0.85rem;">Get a <strong style="color:var(--amber);">FREE local search report</strong> for your business — we'll show you exactly how many leads you're missing every month.</p><div style="background:rgba(221,161,94,0.1);border:1px solid rgba(221,161,94,0.2);border-radius:8px;padding:0.75rem;margin-bottom:1rem;text-align:left;"><div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem;font-size:0.82rem;color:rgba(254,250,224,0.7);"><span style="color:#4CAF50;">✓</span> Your current Google ranking</div><div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem;font-size:0.82rem;color:rgba(254,250,224,0.7);"><span style="color:#4CAF50;">✓</span> Top 3 competitors in your area</div><div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:rgba(254,250,224,0.7);"><span style="color:#4CAF50;">✓</span> Exact gaps we found — delivered in 24hrs</div></div><input type="email" id="exit-email" placeholder="Enter your email" style="
+width:100%;padding:0.85rem 1rem;border-radius:8px;margin-bottom:0.6rem;
 background:rgba(254,250,224,0.08);border:1.5px solid rgba(221,161,94,0.3);
 color:var(--sand);font-family:var(--ff-body);font-size:0.93rem;
 "><button onclick="lwSubmitExitForm(this)"
@@ -2317,13 +2362,13 @@ Send My Free Report →
        aria-label="Close">✕</button>
 
     <!-- Header -->
-    <div style="padding:1.5rem 1.5rem 0;text-align:center;clear:both;">
+    <div style="padding:1rem 1.2rem 0;text-align:center;clear:both;">
       <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;">Free Audit</div>
-      <h3 style="font-family:var(--ff-head);font-size:1.6rem;color:var(--sand);margin-bottom:0.25rem;font-weight:700;">Get Your Free Audit</h3>
-      <p style="font-size:0.82rem;color:rgba(254,250,224,0.5);margin-bottom:1rem;">Free, no obligation — results in 24hrs</p>
+      <h3 style="font-family:var(--ff-head);font-size:1.3rem;color:var(--sand);margin-bottom:0.2rem;font-weight:700;">Get Your Free Audit</h3>
+      <p style="font-size:0.78rem;color:rgba(254,250,224,0.5);margin-bottom:0.75rem;">Free, no obligation — results in 24hrs</p>
 
       <!-- Scarcity inline -->
-      <div class="lw-scarcity" style="margin-bottom:1rem;justify-content:center;gap:1rem;">
+      <div class="lw-scarcity" style="margin-bottom:0.65rem;justify-content:center;gap:1rem;">
         <div class="lw-scar-left">
           <div class="lw-scar-dot"></div>
           <div class="lw-scar-slots" style="font-size:0.78rem;">Only <strong class="lw-slot-count">3</strong> spots left this week</div>
@@ -2336,10 +2381,10 @@ Send My Free Report →
     </div>
 
     <!-- GHL Form -->
-    <div style="padding:0 1rem 1.5rem;">
+    <div style="padding:0 0.8rem 1rem;">
       <iframe
         src="https://api.leadconnectorhq.com/widget/form/xSsWQ7anuXEa9b4Sb1wK"
-        style="width:100%;min-height:520px;border:none;border-radius:10px;display:block;"
+        style="width:100%;min-height:380px;border:none;border-radius:8px;display:block;"
         id="lw-modal-iframe"
         title="Free Audit Form">
       </iframe>
@@ -2962,21 +3007,47 @@ shown = true;
 }, {passive:true});
 })();
 (function(){
-var shown = false;
-var popup = document.getElementById('exit-popup');
-if(!popup) return;
-document.addEventListener('mouseleave', function(e){
-if(!shown && e.clientY <= 10) {
-shown = true;
-popup.style.display = 'flex';
-}
-});
-setTimeout(function(){
-if(!shown) { shown=true; popup.style.display='flex'; }
-}, 40000);
-popup.addEventListener('click', function(e){
-if(e.target === popup) popup.style.display='none';
-});
+  var shown = false;
+  var popup = document.getElementById('exit-popup');
+  if (!popup) return;
+
+  function showPopup() {
+    if (shown) return;
+    shown = true;
+    popup.style.display = 'flex';
+    /* Hide floating CTA + sticky bar while exit popup is open */
+    var _fcta = document.getElementById('floating-cta');
+    var _sbar = document.getElementById('sticky-bar');
+    if (_fcta) { _fcta.style.opacity='0'; _fcta.style.pointerEvents='none'; _fcta.style.transform='translateX(-50%) translateY(100px)'; }
+    if (_sbar) { _sbar.style.transform='translateY(100%)'; _sbar.style.opacity='0'; }
+  }
+
+  /* Trigger after ~2 screen scrolls (1.8× viewport height) */
+  var scrollThreshold = window.innerHeight * 1.8;
+  window.addEventListener('scroll', function onScroll() {
+    if (window.scrollY >= scrollThreshold) {
+      window.removeEventListener('scroll', onScroll);
+      showPopup();
+    }
+  }, { passive: true });
+
+  /* Also trigger on desktop exit intent (cursor leaves top of page) */
+  document.addEventListener('mouseleave', function(e) {
+    if (e.clientY <= 10) showPopup();
+  });
+
+  /* Fallback: 30s timeout if user hasn't scrolled enough */
+  setTimeout(showPopup, 30000);
+
+  /* Close on backdrop click */
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) {
+      popup.style.display = 'none';
+      var sb = document.getElementById('sticky-bar');
+      if (sb) { sb.style.transform=''; sb.style.opacity=''; }
+      window.dispatchEvent(new Event('scroll'));
+    }
+  });
 })();
 (function(){
 var el = document.getElementById('countdown-timer');
@@ -3229,6 +3300,11 @@ function lwOpenModal() {
   if (!overlay) return;
   overlay.classList.add('active');
   document.body.classList.add('lw-modal-open');
+  /* Hide floating CTA + sticky bar while modal is open */
+  var fcta = document.getElementById('floating-cta');
+  var sbar = document.getElementById('sticky-bar');
+  if (fcta) { fcta.style.opacity='0'; fcta.style.pointerEvents='none'; fcta.style.transform='translateX(-50%) translateY(100px)'; }
+  if (sbar) { sbar.style.transform='translateY(100%)'; sbar.style.opacity='0'; }
   // Load iframe when modal opens
   var iframe = document.getElementById('lw-modal-iframe');
   if (iframe && !iframe.getAttribute('data-loaded')) {
@@ -3244,6 +3320,11 @@ function lwCloseModal() {
   if (!overlay) return;
   overlay.classList.remove('active');
   document.body.classList.remove('lw-modal-open');
+  /* Restore sticky bar (floating CTA scroll handler will re-evaluate) */
+  var sbar = document.getElementById('sticky-bar');
+  if (sbar) { sbar.style.transform=''; sbar.style.opacity=''; }
+  /* Floating CTA: re-trigger scroll handler to decide visibility */
+  window.dispatchEvent(new Event('scroll'));
 }
 // Close on overlay click
 document.getElementById('lw-modal-overlay').addEventListener('click', function(e) {
