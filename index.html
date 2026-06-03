@@ -509,6 +509,383 @@ Local Marketing That Works<br><span style="color:var(--amber);">Wherever You Are
 </section>
 
 <section class="numbers" id="results" aria-labelledby="numbers-h2"><div class="wrap"><h2 id="numbers-h2" style="text-align:center;font-family:var(--ff-head);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--ink);margin-bottom:1.2rem;letter-spacing:-0.02em;">Numbers That Tell the Story</h2><div class="numbers-grid" role="list"><div class="nb rv" role="listitem"><div class="nb-n">130+</div><div class="nb-l">Local businesses actively managed</div></div><div class="nb rv rv-d1" role="listitem"><div class="nb-n">150+</div><div class="nb-l">Local pages built per website</div></div><div class="nb rv rv-d2" role="listitem"><div class="nb-n">92%</div><div class="nb-l">Client retention rate</div></div><div class="nb rv rv-d3" role="listitem"><div class="nb-n">2 Wks</div><div class="nb-l">To first measurable results</div></div></div></div></section>
+<!-- ============================================================
+     REAL CLIENT VIDEO TESTIMONIALS SECTION
+     Videos: replace src="..." on each <video> tag with your MP4 URL
+     ============================================================ -->
+<style>
+/* ── Video Testimonials Section ── */
+.vid-testi{background:var(--ink);overflow:hidden;position:relative;}
+.vid-testi-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(221,161,94,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(221,161,94,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.vid-testi-inner{position:relative;z-index:2;}
+.vid-testi-heading{font-family:var(--ff-head);font-size:clamp(2rem,3.5vw,2.8rem);color:var(--sand);font-weight:700;letter-spacing:-0.02em;margin-top:0.8rem;}
+.vid-testi-sub{font-size:1rem;color:rgba(254,250,224,0.55);margin-top:0.5rem;}
+
+/* ── Carousel Track ── */
+.vt-carousel-outer{position:relative;overflow:hidden;margin-top:3rem;padding-bottom:0.5rem;}
+.vt-track-wrap{overflow:hidden;}
+.vt-track{display:flex;gap:1.5rem;will-change:transform;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
+
+/* ── Video Card ── */
+.vt-card{flex:0 0 calc(33.333% - 1rem);background:rgba(254,250,224,0.04);border:1.5px solid rgba(221,161,94,0.18);border-radius:18px;overflow:hidden;position:relative;cursor:pointer;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;}
+.vt-card:hover{border-color:rgba(221,161,94,0.55);transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,0.45);}
+.vt-card video{width:100%;display:block;aspect-ratio:9/16;object-fit:cover;border-radius:0;}
+/* vertical ratio card */
+.vt-card .vt-video-wrap{position:relative;width:100%;aspect-ratio:9/16;background:#0a0f1a;border-radius:0;}
+.vt-card .vt-video-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+
+/* Play overlay */
+.vt-card .vt-play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.25);transition:background 0.3s;border-radius:inherit;}
+.vt-card.playing .vt-play-overlay{background:transparent;pointer-events:none;}
+.vt-card.playing .vt-play-btn{opacity:0;}
+.vt-play-btn{width:54px;height:54px;border-radius:50%;background:rgba(221,161,94,0.9);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.25s;box-shadow:0 6px 20px rgba(0,0,0,0.4);}
+.vt-play-btn svg{width:22px;height:22px;fill:#283618;margin-left:3px;}
+.vt-card:hover .vt-play-btn{background:var(--amber);transform:scale(1.08);}
+
+/* Unmute badge */
+.vt-unmute-badge{position:absolute;top:12px;right:12px;background:rgba(40,54,24,0.85);border:1px solid rgba(221,161,94,0.3);color:var(--amber);font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.7rem;border-radius:100px;backdrop-filter:blur(6px);opacity:0;transition:opacity 0.25s;pointer-events:none;}
+.vt-card.playing .vt-unmute-badge{opacity:1;}
+
+/* Nav dots */
+.vt-dots{display:flex;justify-content:center;gap:0.5rem;margin-top:2rem;}
+.vt-dot{width:8px;height:8px;border-radius:50%;background:rgba(221,161,94,0.25);border:none;cursor:pointer;padding:0;transition:all 0.25s;}
+.vt-dot.active{background:var(--amber);width:24px;border-radius:4px;}
+
+/* Nav arrows */
+.vt-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:46px;height:46px;border-radius:50%;background:rgba(221,161,94,0.12);border:1.5px solid rgba(221,161,94,0.35);color:var(--amber);font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.25s;backdrop-filter:blur(8px);}
+.vt-arrow:hover{background:rgba(221,161,94,0.28);border-color:rgba(221,161,94,0.7);transform:translateY(-50%) scale(1.07);}
+.vt-prev-btn{left:-24px;}
+.vt-next-btn{right:-24px;}
+
+/* Auto-scroll (only when not paused) */
+@keyframes vt-scroll-left{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+.vt-track.auto-scroll{
+  animation:vt-scroll-left var(--vt-duration,28s) linear infinite;
+}
+.vt-track.auto-scroll.paused,
+.vt-carousel-outer:hover .vt-track.auto-scroll{
+  animation-play-state:paused;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .vt-card{flex:0 0 calc(50% - 0.75rem)!important;}
+}
+@media(max-width:560px){
+  .vt-card{flex:0 0 calc(88vw)!important;}
+  .vt-arrow{display:none!important;}
+}
+</style>
+
+<section class="sec vid-testi" id="video-testimonials" aria-labelledby="vt-h2">
+  <div class="vid-testi-bg"></div>
+  <div class="wrap vid-testi-inner">
+
+    <!-- Heading -->
+    <div class="rv" style="text-align:center;max-width:640px;margin:0 auto;">
+      <span class="sec-tag sec-tag-light">Client Video Testimonials</span>
+      <h2 id="vt-h2" class="vid-testi-heading">Real Client Video Testimonials</h2>
+      <span class="rule" style="margin:1rem auto;"></span>
+      <p class="vid-testi-sub">Hear directly from our clients about their experience and results.</p>
+    </div>
+
+    <!-- Carousel -->
+    <div class="vt-carousel-outer" id="vtCarouselOuter">
+      <!-- Nav arrows (hidden on mobile via CSS) -->
+      <button class="vt-arrow vt-prev-btn" id="vtPrev" aria-label="Previous video">&#8249;</button>
+      <button class="vt-arrow vt-next-btn" id="vtNext" aria-label="Next video">&#8250;</button>
+
+      <div class="vt-track-wrap">
+        <!-- We duplicate the 5 cards once for infinite-scroll effect -->
+        <div class="vt-track" id="vtTrack">
+
+          <!-- Card 1 -->
+          <article class="vt-card" data-index="0">
+            <div class="vt-video-wrap">
+              <video
+                src="videos/v1.mp4"
+                loop muted playsinline preload="none"
+                poster=""
+                aria-label="Client video testimonial 1"
+              ></video>
+            </div>
+            <div class="vt-play-overlay">
+              <button class="vt-play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <span class="vt-unmute-badge">Tap for sound</span>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="vt-card" data-index="1">
+            <div class="vt-video-wrap">
+              <video
+                src="videos/v2.mp4"
+                loop muted playsinline preload="none"
+                aria-label="Client video testimonial 2"
+              ></video>
+            </div>
+            <div class="vt-play-overlay">
+              <button class="vt-play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <span class="vt-unmute-badge">Tap for sound</span>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="vt-card" data-index="2">
+            <div class="vt-video-wrap">
+              <video
+                src="videos/v3.mp4"
+                loop muted playsinline preload="none"
+                aria-label="Client video testimonial 3"
+              ></video>
+            </div>
+            <div class="vt-play-overlay">
+              <button class="vt-play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <span class="vt-unmute-badge">Tap for sound</span>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="vt-card" data-index="3">
+            <div class="vt-video-wrap">
+              <video
+                src="videos/v4.mp4"
+                loop muted playsinline preload="none"
+                aria-label="Client video testimonial 4"
+              ></video>
+            </div>
+            <div class="vt-play-overlay">
+              <button class="vt-play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <span class="vt-unmute-badge">Tap for sound</span>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="vt-card" data-index="4">
+            <div class="vt-video-wrap">
+              <video
+                src="videos/v5.mp4"
+                loop muted playsinline preload="none"
+                aria-label="Client video testimonial 5"
+              ></video>
+            </div>
+            <div class="vt-play-overlay">
+              <button class="vt-play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <span class="vt-unmute-badge">Tap for sound</span>
+          </article>
+
+          <!-- Duplicate set for seamless infinite scroll (CSS animation approach) -->
+          <article class="vt-card vt-clone" aria-hidden="true">
+            <div class="vt-video-wrap">
+              <video src="videos/v1.mp4" loop muted playsinline preload="none"></video>
+            </div>
+            <div class="vt-play-overlay"><button class="vt-play-btn" aria-label="Play video"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></button></div>
+            <span class="vt-unmute-badge">Tap for sound</span>
+          </article>
+          <article class="vt-card vt-clone" aria-hidden="true">
+            <div class="vt-video-wrap">
+              <video src="videos/v2.mp4" loop muted playsinline preload="none"></video>
+            </div>
+            <div class="vt-play-overlay"><button class="vt-play-btn" aria-label="Play video"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></button></div>
+            <span class="vt-unmute-badge">Tap for sound</span>
+          </article>
+          <article class="vt-card vt-clone" aria-hidden="true">
+            <div class="vt-video-wrap">
+              <video src="videos/v3.mp4" loop muted playsinline preload="none"></video>
+            </div>
+            <div class="vt-play-overlay"><button class="vt-play-btn" aria-label="Play video"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></button></div>
+            <span class="vt-unmute-badge">Tap for sound</span>
+          </article>
+          <article class="vt-card vt-clone" aria-hidden="true">
+            <div class="vt-video-wrap">
+              <video src="videos/v4.mp4" loop muted playsinline preload="none"></video>
+            </div>
+            <div class="vt-play-overlay"><button class="vt-play-btn" aria-label="Play video"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></button></div>
+            <span class="vt-unmute-badge">Tap for sound</span>
+          </article>
+          <article class="vt-card vt-clone" aria-hidden="true">
+            <div class="vt-video-wrap">
+              <video src="videos/v5.mp4" loop muted playsinline preload="none"></video>
+            </div>
+            <div class="vt-play-overlay"><button class="vt-play-btn" aria-label="Play video"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></button></div>
+            <span class="vt-unmute-badge">Tap for sound</span>
+          </article>
+
+        </div><!-- /vt-track -->
+      </div><!-- /vt-track-wrap -->
+    </div><!-- /vt-carousel-outer -->
+
+    <!-- Dots nav -->
+    <div class="vt-dots" id="vtDots" role="tablist" aria-label="Video testimonial navigation">
+      <button class="vt-dot active" data-dot="0" aria-label="Video 1" role="tab" aria-selected="true"></button>
+      <button class="vt-dot" data-dot="1" aria-label="Video 2" role="tab" aria-selected="false"></button>
+      <button class="vt-dot" data-dot="2" aria-label="Video 3" role="tab" aria-selected="false"></button>
+      <button class="vt-dot" data-dot="3" aria-label="Video 4" role="tab" aria-selected="false"></button>
+      <button class="vt-dot" data-dot="4" aria-label="Video 5" role="tab" aria-selected="false"></button>
+    </div>
+
+  </div><!-- /wrap -->
+</section>
+
+<script>
+(function(){
+  /* ── Video Testimonials Carousel ── */
+  var outer   = document.getElementById('vtCarouselOuter');
+  var track   = document.getElementById('vtTrack');
+  var dotsWrap= document.getElementById('vtDots');
+  var prevBtn = document.getElementById('vtPrev');
+  var nextBtn = document.getElementById('vtNext');
+  if(!outer||!track) return;
+
+  var cards       = Array.from(track.querySelectorAll('.vt-card:not(.vt-clone)'));
+  var allCards    = Array.from(track.querySelectorAll('.vt-card'));
+  var dots        = Array.from(dotsWrap.querySelectorAll('.vt-dot'));
+  var total       = cards.length;   // 5
+  var current     = 0;
+  var autoTimer   = null;
+  var isHovering  = false;
+  var AUTO_INTERVAL = 3500;
+
+  /* ── Responsive: cards per view ── */
+  function cardsPerView(){
+    var w = window.innerWidth;
+    if(w<=560) return 1;
+    if(w<=900) return 2;
+    return 3;
+  }
+
+  /* ── Layout: set card widths based on viewport ── */
+  function setCardWidths(){
+    var cpv = cardsPerView();
+    var gap = 24; // 1.5rem gap
+    allCards.forEach(function(c){
+      c.style.flex = '0 0 calc('+(100/cpv)+'% - '+(gap*(cpv-1)/cpv)+'px)';
+    });
+  }
+
+  /* ── Go to slide ── */
+  function goTo(idx){
+    idx = ((idx % total) + total) % total;
+    current = idx;
+    var cpv   = cardsPerView();
+    var cardW = cards[0].getBoundingClientRect().width;
+    var gap   = 24;
+    var offset= (cardW + gap) * idx;
+    track.style.transform = 'translateX(-'+offset+'px)';
+    dots.forEach(function(d,i){ d.classList.toggle('active', i===idx); d.setAttribute('aria-selected',i===idx); });
+  }
+
+  /* ── Auto-scroll timer ── */
+  function startAuto(){
+    clearInterval(autoTimer);
+    autoTimer = setInterval(function(){
+      if(!isHovering) goTo(current+1);
+    }, AUTO_INTERVAL);
+  }
+
+  /* ── Pause on hover ── */
+  outer.addEventListener('mouseenter', function(){ isHovering=true; });
+  outer.addEventListener('mouseleave', function(){ isHovering=false; });
+
+  /* ── Touch/swipe ── */
+  var touchStartX = 0;
+  outer.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; isHovering=true; },{passive:true});
+  outer.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx)>40){ goTo(dx<0 ? current+1 : current-1); }
+    setTimeout(function(){ isHovering=false; }, 1200);
+  },{passive:true});
+
+  /* ── Arrow buttons ── */
+  prevBtn.addEventListener('click', function(){ goTo(current-1); startAuto(); });
+  nextBtn.addEventListener('click', function(){ goTo(current+1); startAuto(); });
+
+  /* ── Dot buttons ── */
+  dots.forEach(function(d){
+    d.addEventListener('click', function(){
+      goTo(parseInt(d.dataset.dot));
+      startAuto();
+    });
+  });
+
+  /* ── Play / unmute on click ── */
+  allCards.forEach(function(card){
+    card.addEventListener('click', function(){
+      var vid = card.querySelector('video');
+      if(!vid) return;
+      /* Pause all other videos */
+      allCards.forEach(function(c){
+        if(c!==card){
+          var v = c.querySelector('video');
+          if(v && !v.paused){ v.pause(); v.muted=true; }
+          c.classList.remove('playing');
+        }
+      });
+      if(card.classList.contains('playing')){
+        /* Toggle mute */
+        vid.muted = !vid.muted;
+      } else {
+        vid.muted = false;
+        vid.play().catch(function(){ vid.muted=true; vid.play(); });
+        card.classList.add('playing');
+      }
+    });
+  });
+
+  /* ── Lazy load videos via IntersectionObserver ── */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var v = e.target.querySelector('video[preload="none"]');
+          if(v){ v.preload='auto'; v.load(); }
+          io.unobserve(e.target);
+        }
+      });
+    },{rootMargin:'200px'});
+    allCards.forEach(function(c){ io.observe(c); });
+  }
+
+  /* ── Auto-play muted videos when visible (autoplay) ── */
+  if('IntersectionObserver' in window){
+    var playIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var v = e.target.querySelector('video');
+        if(!v) return;
+        if(e.isIntersecting){ v.muted=true; v.play().catch(function(){}); }
+        else { v.pause(); }
+      });
+    },{threshold:0.4});
+    /* Only autoplay the 5 real cards */
+    cards.forEach(function(c){ playIO.observe(c); });
+  }
+
+  /* ── Init ── */
+  setCardWidths();
+  goTo(0);
+  startAuto();
+  window.addEventListener('resize', function(){ setCardWidths(); goTo(current); });
+
+})();
+</script>
+<!-- ============================================================
+     END VIDEO TESTIMONIALS SECTION
+     ============================================================ -->
+
 <section class="sec process" id="process" aria-labelledby="process-h2" style="background:var(--sand);overflow:hidden;">
 <div class="wrap">
   <div class="rv" style="text-align:center;max-width:680px;margin:0 auto;">
