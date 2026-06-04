@@ -610,6 +610,16 @@ Local Marketing That Works<br><span style="color:var(--amber);">Wherever You Are
   /* ── Pause on hover / resume on leave ── */
   outer.addEventListener('mouseenter',function(){paused=true;});
   outer.addEventListener('mouseleave',function(){paused=false;});
+  /* ── Hover to unmute: play audio on hovered card only ── */
+  allCards.forEach(function(card){
+    var v=card.querySelector('video');
+    if(!v)return;
+    card.addEventListener('mouseenter',function(){
+      allCards.forEach(function(c){var o=c.querySelector('video');if(o&&c!==card)o.muted=true;});
+      v.muted=false;
+    });
+    card.addEventListener('mouseleave',function(){v.muted=true;});
+  });
   /* ── Touch/swipe ── */
   var touchX=0;
   outer.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX;paused=true;},{passive:true});
