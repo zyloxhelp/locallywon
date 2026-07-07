@@ -32,17 +32,31 @@ box-shadow:0 2px 20px rgba(40,54,24,0.08);
 height:68px; display:flex; align-items:center;
 "><div class="nav-inner" style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem);">
 <a href="/" class="nav-logo" aria-label="Locally Won Home"><img src="images/img_01.png" alt="Locally Won" height="42" loading="lazy" fetchpriority="high" decoding="async"></a>
+<div class="nav-links">
+<a href="#services">Services</a>
+<a href="#results">Results</a>
+<a href="#process">Process</a>
+<a href="#cases-h2">Testimonials</a>
+</div>
 <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
 <div id="nav-offer-timer" style="display:flex;align-items:center;gap:0.5rem;background:rgba(40,54,24,0.08);border:1px solid rgba(40,54,24,0.15);border-radius:100px;padding:0.45rem 1rem;font-size:0.82rem;font-weight:700;color:var(--ink);white-space:nowrap;">
     🔥 Offer expires in: <span id="nav-countdown" style="color:#e05c5c;font-variant-numeric:tabular-nums;letter-spacing:0.04em;">47:59:59</span>
 </div>
 <a href="#audit" class="btn btn-amber lw-nav-cta" style="font-family:var(--ff-body);font-size:0.9rem;font-weight:700;padding:0.6rem 1.4rem;border-radius:100px;background:var(--amber);color:var(--ink);text-decoration:none;white-space:nowrap;animation:navBtnPulse 2.5s ease-in-out infinite;">Book a Call</a>
+<button id="nav-hamburger" aria-label="Open menu" aria-expanded="false" style="background:none;border:none;cursor:pointer;color:var(--ink);padding:0.3rem;align-items:center;justify-content:center;flex-shrink:0;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 </div>
-</div></nav><div id="mobile-menu" style="
+</div></nav>
+<style>
+#nav-hamburger{display:none;}
+html{scroll-padding-top:84px;}
+#mobile-menu{opacity:0;transition:opacity 0.3s ease;}
+#mobile-menu.mm-open{opacity:1;}
+</style>
+<div id="mobile-menu" style="
 display:none;position:fixed;inset:0;z-index:998;
 background:rgba(40,54,24,0.98);backdrop-filter:blur(12px);
 flex-direction:column;align-items:center;justify-content:center;gap:2rem;
-"><a href="#services" onclick="document.getElementById('mobile-menu').style.display='none'" style="color:var(--sand);text-decoration:none;font-size:1.4rem;font-weight:600;font-family:var(--ff-head);">Services</a><a href="#process" onclick="document.getElementById('mobile-menu').style.display='none'" style="color:var(--sand);text-decoration:none;font-size:1.4rem;font-weight:600;font-family:var(--ff-head);">How It Works</a><a href="#results" onclick="document.getElementById('mobile-menu').style.display='none'" style="color:var(--sand);text-decoration:none;font-size:1.4rem;font-weight:600;font-family:var(--ff-head);">Results</a><a href="#team" onclick="document.getElementById('mobile-menu').style.display='none'" style="color:var(--sand);text-decoration:none;font-size:1.4rem;font-weight:600;font-family:var(--ff-head);">Our Team</a><a href="#audit" onclick="document.getElementById('mobile-menu').style.display='none'" class="btn btn-amber btn-lg" style="font-family:var(--ff-body);">Book a Call</a><button onclick="document.getElementById('mobile-menu').style.display='none'" aria-label="Close menu" style="background:none;border:none;color:rgba(254,250,224,0.5);font-size:2rem;cursor:pointer;margin-top:1rem;">✕</button></div><section class="sec lw150" id="main-content" aria-labelledby="lw150-h2" style="padding-top:calc(68px + 36px + clamp(3rem,6vw,5rem));overflow:hidden;margin-top:2rem;">
+"><a href="#services" onclick="document.getElementById('mobile-menu').style.display='none'" style="color:var(--sand);text-decoration:none;font-size:1.4rem;font-weight:600;font-family:var(--ff-head);">Services</a><a href="#process" onclick="document.getElementById('mobile-menu').style.display='none'" style="color:var(--sand);text-decoration:none;font-size:1.4rem;font-weight:600;font-family:var(--ff-head);">How It Works</a><a href="#results" onclick="document.getElementById('mobile-menu').style.display='none'" style="color:var(--sand);text-decoration:none;font-size:1.4rem;font-weight:600;font-family:var(--ff-head);">Results</a><a href="#cases-h2" onclick="document.getElementById('mobile-menu').style.display='none'" style="color:var(--sand);text-decoration:none;font-size:1.4rem;font-weight:600;font-family:var(--ff-head);">Testimonials</a><a href="#team" onclick="document.getElementById('mobile-menu').style.display='none'" style="color:var(--sand);text-decoration:none;font-size:1.4rem;font-weight:600;font-family:var(--ff-head);">Our Team</a><a href="#audit" onclick="document.getElementById('mobile-menu').style.display='none'" class="btn btn-amber btn-lg" style="font-family:var(--ff-body);">Book a Call</a><button onclick="document.getElementById('mobile-menu').style.display='none'" aria-label="Close menu" style="background:none;border:none;color:rgba(254,250,224,0.5);font-size:2rem;cursor:pointer;margin-top:1rem;">✕</button></div><section class="sec lw150" id="main-content" aria-labelledby="lw150-h2" style="padding-top:calc(68px + 36px + clamp(3rem,6vw,5rem));overflow:hidden;margin-top:2rem;">
 <div class="lw150-bg" aria-hidden="true"></div>
 <div class="lw150-glow" aria-hidden="true"></div>
 <div class="wrap lw150-inner" style="text-align:center;">
@@ -1319,7 +1333,7 @@ window.dispatchEvent(new Event('scroll'));}});})();(function(){var el=document.g
 end=parseInt(end);function update(){var diff=end-Date.now();if(diff<=0){el.textContent='00:00:00';return;}
 var h=Math.floor(diff/3600000);var m=Math.floor((diff%3600000)/60000);var s=Math.floor((diff%60000)/1000);el.textContent=(h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;}
 update();setInterval(update,1000);})();(function(){var spots=['spots-count','audit-spots','form-spots'];var key='lw_spots';var val=sessionStorage.getItem(key)||3;spots.forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=val;});})();(function(){var el=document.getElementById('live-leads');if(!el)return;var base=12847;function increment(){base+=Math.floor(Math.random()*3)+1;el.textContent=base.toLocaleString();setTimeout(increment,8000+Math.random()*7000);}
-var start=base-200;var current=start;var timer=setInterval(function(){current+=3;el.textContent=current.toLocaleString();if(current>=base){el.textContent=base.toLocaleString();clearInterval(timer);setTimeout(increment,10000);}},20);})();if(document.getElementById('nav-hamburger')){document.getElementById('nav-hamburger').addEventListener('click',function(){var menu=document.getElementById('mobile-menu');if(menu)menu.style.display=menu.style.display==='flex'?'none':'flex';});}
+var start=base-200;var current=start;var timer=setInterval(function(){current+=3;el.textContent=current.toLocaleString();if(current>=base){el.textContent=base.toLocaleString();clearInterval(timer);setTimeout(increment,10000);}},20);})();if(document.getElementById('nav-hamburger')){document.getElementById('nav-hamburger').addEventListener('click',function(){var menu=document.getElementById('mobile-menu');if(!menu)return;if(menu.classList.contains('mm-open')){menu.classList.remove('mm-open');setTimeout(function(){menu.style.display='none';},300);}else{menu.style.display='flex';requestAnimationFrame(function(){menu.classList.add('mm-open');});}});}
 var GHL_WEBHOOK_URL='https://services.leadconnectorhq.com/hooks/YOUR_WEBHOOK_ID/webhook-trigger/YOUR_TRIGGER_ID';var GHL_LOCATION_ID='YOUR_GHL_LOCATION_ID';function getFormData(btn){var container=btn.closest('.hero-form-box')||btn.closest('.form-wrap')||btn.closest('[id="audit"]')||btn.parentElement;var data={source:window.location.href,page:'Locally Won Main - Google Ads Landing Page',timestamp:new Date().toISOString(),location_id:GHL_LOCATION_ID};var inputs=container.querySelectorAll('input, select, textarea');inputs.forEach(function(inp){var val=inp.value.trim();if(!val)return;var type=inp.type||inp.tagName.toLowerCase();var placeholder=(inp.placeholder||'').toLowerCase();if(placeholder.includes('name')||inp.name==='name'){data.name=val;data.firstName=val.split(' ')[0];data.lastName=val.split(' ').slice(1).join(' ')||'';}else if(type==='email'||placeholder.includes('email')||inp.name==='email'){data.email=val;}else if(placeholder.includes('business')||inp.name==='business'){data.businessType=val;data.customField={business_type:val};}else if(placeholder.includes('phone')||type==='tel'){data.phone=val;}else if(placeholder.includes('website')||inp.name==='website'){data.website=val;}else if(inp.tagName==='SELECT'&&inp.name==='country'){data.country=val;data.customField=Object.assign(data.customField||{},{country:val});}});return data;}
 function showSuccess(btn,container){btn.disabled=true;btn.style.opacity='0.7';btn.textContent='✓ Sent! Check your email in 24hrs';if(container){container.querySelectorAll('input, textarea').forEach(function(inp){inp.value='';});}
 var msg=document.createElement('div');msg.style.cssText='background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.3);border-radius:8px;padding:0.8rem 1rem;margin-top:0.8rem;font-size:0.85rem;color:#4CAF50;text-align:center;';msg.innerHTML='🎉 <strong>Audit request received!</strong><br>We\'ll send your free report within 24 hours.';btn.parentElement.appendChild(msg);if(window.gtag)gtag('event','form_submit',{event_category:'Lead',event_label:'Free Audit'});if(window.fbq)fbq('track','Lead');}
@@ -1341,6 +1355,59 @@ function lwCloseModal(){var overlay=document.getElementById('lw-modal-overlay');
 window.dispatchEvent(new Event('scroll'));}
 document.getElementById('lw-modal-overlay').addEventListener('click',function(e){if(e.target===this)lwCloseModal();});document.addEventListener('keydown',function(e){if(e.key==='Escape')lwCloseModal();});document.addEventListener('click',function(e){var el=e.target.closest('a[href="#audit"], a[href="#lw150"]');if(el){e.preventDefault();lwOpenModal();}});document.querySelectorAll('a[href="#audit"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();lwOpenModal();});});(function(){var cta=document.getElementById('floating-cta');var showAt=window.innerHeight*1.5;var hideAt=window.innerHeight*3.5;var visible=false;function update(){var s=window.scrollY;var shouldShow=(s>showAt&&s<hideAt);if(shouldShow&&!visible){visible=true;cta.style.opacity='1';cta.style.transform='translateX(-50%) translateY(0)';cta.style.pointerEvents='auto';}else if(!shouldShow&&visible){visible=false;cta.style.opacity='0';cta.style.transform='translateX(-50%) translateY(100px)';cta.style.pointerEvents='none';}}
 window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',function(){showAt=window.innerHeight*1.5;hideAt=window.innerHeight*3.5;});})();</script>
+<footer class="lw-footer" aria-labelledby="lw-footer-brand">
+<div class="wrap">
+<div class="lw-footer-top">
+<div class="lw-footer-brand" id="lw-footer-brand">
+<a href="/" aria-label="Locally Won Home" class="lw-footer-logo-link"><span class="lw-footer-logo-badge"><img src="images/img_01.png" alt="Locally Won" height="34" loading="lazy" decoding="async"></span></a>
+<p class="lw-footer-tagline">Local marketing that gets local businesses found, chosen and booked — 150+ page websites, local SEO, GBP growth and AI automation, all under one roof.</p>
+<p class="lw-footer-location">📍 Proudly serving local businesses across the USA, UAE, UK and India</p>
+</div>
+<div class="lw-footer-right">
+<nav class="lw-footer-links" aria-label="Footer navigation">
+<a href="/">Home</a>
+<a href="#services">Services</a>
+<a href="#results">Results</a>
+<a href="#process">Process</a>
+<a href="#cases-h2">Testimonials</a>
+<a href="#audit">Contact</a>
+</nav>
+<a href="#audit" class="btn btn-amber btn-lg">Book a Call</a>
+</div>
+</div>
+<div class="lw-footer-bottom">
+<span>© 2026 Locally Won. All rights reserved.</span>
+<span>Local SEO • Website Design • GBP Growth • AI Automation</span>
+</div>
+</div>
+</footer>
+<style>
+.lw-footer{background:var(--ink);padding:clamp(3rem,6vw,4.5rem) 0 0;overflow:hidden;}
+.lw-footer-logo-link{display:inline-block;margin-bottom:1.1rem;line-height:0;}
+.lw-footer-logo-badge{display:inline-flex;align-items:center;background:var(--sand);border-radius:10px;padding:0.55rem 1rem;}
+.lw-footer-logo-badge img{height:34px;width:auto;display:block;}
+.lw-footer-top{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start;padding-bottom:clamp(2rem,4vw,3rem);}
+.lw-footer-tagline{font-size:0.93rem;line-height:1.8;color:rgba(254,250,224,0.55);max-width:400px;margin-bottom:0.9rem;}
+.lw-footer-location{font-size:0.85rem;color:rgba(254,250,224,0.4);display:flex;align-items:center;gap:0.4rem;}
+.lw-footer-right{display:flex;flex-direction:column;align-items:flex-end;gap:1.6rem;}
+.lw-footer-links{display:flex;gap:1.7rem;flex-wrap:wrap;justify-content:flex-end;}
+.lw-footer-links a{color:rgba(254,250,224,0.6);text-decoration:none;font-size:0.9rem;font-weight:500;letter-spacing:0.01em;transition:color var(--t);}
+.lw-footer-links a:hover{color:var(--amber);}
+.lw-footer-bottom{border-top:1px solid rgba(254,250,224,0.1);padding:1.4rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;}
+.lw-footer-bottom span{font-size:0.78rem;color:rgba(254,250,224,0.4);letter-spacing:0.01em;}
+@media(max-width:820px){
+  .lw-footer-top{grid-template-columns:1fr;text-align:center;gap:2rem;}
+  .lw-footer-brand{display:flex;flex-direction:column;align-items:center;}
+  .lw-footer-tagline{max-width:480px;}
+  .lw-footer-right{align-items:center;}
+  .lw-footer-links{justify-content:center;}
+  .lw-footer-bottom{justify-content:center;text-align:center;}
+}
+@media(max-width:480px){
+  .lw-footer-links{gap:1rem 1.4rem;}
+  .lw-footer-right .btn{width:100%;justify-content:center;}
+}
+</style>
 </body></html>
 
 
