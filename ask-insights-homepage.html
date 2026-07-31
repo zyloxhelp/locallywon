@@ -119,6 +119,14 @@
    ============================================================ */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
+/* Global safe-guard: whatever else is on the page, html/body can never
+   exceed the viewport width, and no image/video/svg can force it wider.
+   overflow-x:clip (not hidden) on body for the same reason as the html rule
+   further down — hidden turns body into a scroll container, which breaks
+   position:sticky on .site-header. */
+html,body{width:100%;max-width:100%}
+body{overflow-x:clip}
+img,video,svg{max-width:100%;height:auto}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
@@ -431,8 +439,22 @@ section{padding:var(--space-24) 0}
 
 @media(max-width:900px){
   .about-grid{grid-template-columns:1fr;gap:40px}
-  .about-portrait{max-width:320px;margin:0 auto}
-  .credential-badge{right:8px}
+  /* .about-portrait previously had margin:0 auto with no explicit width. On
+     mobile that turns off the grid's default stretch sizing, and every child
+     (.portrait-frame, its img, .credential-badge) is position:absolute, so
+     none of them contribute intrinsic width to a shrink-to-fit box — the
+     container collapsed to 0x0, hiding the whole photo. width:100% restores
+     a definite width for aspect-ratio to size against; max-width still caps
+     it and margin:auto still centers it. */
+  .about-portrait{width:100%;max-width:320px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+  .about-portrait .portrait-frame{border-radius:16px}
+  /* Badge was position:absolute, overlaid on the image itself — on the
+     cropped mobile aspect ratio (3/4) that placed it right over the subject's
+     face. Take it out of the image entirely: static positioning drops it
+     into the flex column below the photo in DOM order, order:-1 moves it
+     back above visually, align-self:flex-end keeps it right-aligned. Same
+     pill styling, colors, size and float animation, just no longer overlaid. */
+  .credential-badge{position:static;right:auto;top:auto;order:-1;align-self:flex-end}
 }
 
 /* ============================================================
@@ -764,6 +786,20 @@ html { overflow-x: clip; }
       them compress; where there is already room the layout is unchanged. */
 @media (max-width: 900px) {
   .umbrella-layout > * { min-width: 0; }
+}
+
+/* 4. Every <section> carries a flat padding:87px 0 (var(--space-24)) with no
+      mobile override, so on phones the page is dominated by inter-section
+      whitespace rather than content — 174px of pure top+bottom padding per
+      section, ~1900px total across the 11 sections on this page (measured:
+      full-page mobile screenshot is 12500px tall, most of it blank bands
+      between sections). Scale it down on touch-sized screens; each section's
+      own internal spacing (grids, gaps, .section-head margins) is untouched. */
+@media (max-width: 900px) {
+  section { padding: 56px 0; }
+}
+@media (max-width: 480px) {
+  section { padding: 44px 0; }
 }
 </style>
 </head>
