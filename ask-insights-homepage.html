@@ -722,6 +722,49 @@ section{padding:var(--space-24) 0}
   .gf-landmass{clip-path:inset(0 0 0 0)!important;transition:none!important}
   .gf-pin-pulse{animation:none!important;opacity:0!important}
 }
+
+/* === mobile compatibility fixes === */
+
+/* 1. Horizontal scrollbar at every viewport width.
+      .reveal-left / .reveal-right start at translateX(-32px / +32px), so any
+      element that has not yet been scrolled into view sits outside the
+      viewport and widens the page. Measured 8px of overflow at 390/414/768px
+      and 11px at 360px. Reveal vertically on touch-sized screens: identical
+      effect, no horizontal overflow. */
+@media (max-width: 900px) {
+  .reveal-left,
+  .reveal-right { transform: translateY(28px); }
+}
+
+/* Safety net for anything else that pokes past the edge.
+   `clip` and not `hidden` on purpose: overflow:hidden on the root element
+   turns it into a scroll container, which breaks position:sticky on
+   .site-header. overflow:clip has no such side effect. */
+html { overflow-x: clip; }
+
+/* 2. Header overflowed by up to 51px on 320-360px phones. The brand lockup,
+      the "Book a Consultation" pill (white-space:nowrap, so it cannot wrap)
+      and the hamburger had to share what was left after 92px of combined
+      .wrap-wide (24px x2) and .inner (22px x2) padding. Reclaim that space
+      and scale the pieces down rather than dropping the CTA, which is the
+      page's primary conversion element. */
+@media (max-width: 420px) {
+  :root { --container-pad: 14px; }
+  .site-header .inner { padding: 10px 0; gap: 10px; }
+  .brand-mark { font-size: 13px; gap: 7px; }
+  .brand-mark-icon { height: 27px; }
+  .header-actions { gap: 8px; }
+  .header-actions .btn.sm { padding: 9px 13px; font-size: 11.5px; }
+  .nav-toggle { padding: 6px; }
+}
+
+/* 3. .umbrella-layout is a three-track grid. Grid items default to
+      min-width:auto (i.e. min-content), so its side columns refused to shrink
+      and the grid ran past the viewport on 320px phones. min-width:0 lets
+      them compress; where there is already room the layout is unchanged. */
+@media (max-width: 900px) {
+  .umbrella-layout > * { min-width: 0; }
+}
 </style>
 </head>
 <body>
